@@ -65,6 +65,66 @@
             color: #ffc107;
             text-decoration: none;
         }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .message {
+            margin-top: 20px;
+            color: #155724;
+            background-color: #d4edda;
+            padding: 10px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+        }
 		
 	</style>
 </head>
@@ -101,17 +161,48 @@
 		</div>
 	</nav>
 
-              <h1>c</h1>
-              <h1>o</h1>
-              <h1>m</h1>
-              <h1>i</h1>
-              <h1>n</h1>
-              <h1>g</h1>
-              <h1> </h1>
-              <h1>s</h1>
-              <h1>o</h1>
-              <h1>o</h1>
-              <h1>n</h1>
+              < <div class="container">
+                <h1>Find Help</h1>
+                <form id="helpForm">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="missing">Missing Pet</option>
+                        <option value="emergency">Emergency</option>
+                        <option value="accident">Accident</option>
+                    </select>
+        
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        
+                    <label for="contact">Contact Information:</label>
+                    <input type="text" id="contact" name="contact" placeholder="Enter your email or phone" required>
+        
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" placeholder="Enter the location of the incident" required>
+        
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" placeholder="Provide details about the incident" rows="5" required></textarea>
+        
+                    <button type="submit">Submit</button>
+                </form>
+        
+                <div id="responseMessage" class="message" style="display: none;">
+                    Thank you! Your submission has been received and will be addressed shortly.
+                </div>
+            </div>
+        
+            <script>
+                document.getElementById('helpForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const responseMessage = document.getElementById('responseMessage');
+                    responseMessage.style.display = 'block';
+                    setTimeout(() => {
+                        responseMessage.style.display = 'none';
+                        document.getElementById('helpForm').reset();
+                    }, 5000);
+                });
+            </script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
